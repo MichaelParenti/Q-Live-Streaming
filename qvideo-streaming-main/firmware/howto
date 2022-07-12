@@ -1,0 +1,51 @@
+Goto the following Website to understand how to install the updated firmare.
+
+Firmware:  demo_v3_RTSP_4.610.1.zip
+
+https://support.wyze.com/hc/en-us/articles/360026245231-Wyze-Cam-RTSP
+
+Or
+
+
+
+    Wyze Cameras Wyze Cam v1/v2 & Pan Wyze Cam v1/v2/Pan Features 
+
+Wyze Cam RTSP
+Avatar
+Gwendolyn
+April 05, 2022 23:36
+RTSP was considered a beta feature and we are currently assessing the path forward as the firmware versions have aged quite a bit. We have removed the firmware files for these versions for now and we’ll update the pages when plans are finalized. Please note that firmware files take a while to work on and test so you may not see an update in the near future. We apologize for the inconvenience.
+
+RTSP is not a stock feature with the Wyze Cam and is a beta feature that requires the installation of different firmware.  Using the RTSP firmware will prevent the camera from supporting any future functions or features in the Wyze app.
+
+What is RTSP?
+
+Real Time Streaming Protocol (RTSP) is a standard network protocol designed to establish and control media sessions between endpoints. Due to hardware limitations, RTSP could only be achieved as a separate firmware version for Wyze Cam v2, Wyze Cam v3, and Wyze Cam Pan. Please note that features and functions added after the version will not be available. AI and other Cam Plus-related features may be unstable for cameras using this firmware so it is recommended to only use it if you plan to use RTSP full-time.
+Support for RTSP
+
+We don't have the resources to keep developing two branches of firmware for Wyze Cam v2, Wyze Cam v3, and Wyze Cam Pan. At this time, we are not committing to ongoing maintenance for RTSP firmware. We will deliver security updates as needed.
+How to install the RTSP Firmware
+
+    Download the Wyze Cam v2 RTSP file, the Wyze Cam v3 RTSP file, or the Wyze Cam Pan RTSP file. Please note that the Wyze Cam Pan firmware file is not compatible with Wyze Cam Pan v2.
+    For Wyze Cam v2 and Pan, unzip the file and rename the contents to 'demo.bin'. Then transfer the files to a microSD card's root directory. For Wyze Cam v3, transfer the ‘demo_wcv3.bin’ file to a microSD card's root directory
+    Unplug your Wyze Cam and insert the prepared microSD card.
+    microSD__1_.png
+    Hold the camera's Setup button while plugging in the USB cable and continue to hold the Setup button until the light turns solid blue for Wyze Cam v2 and Pan or purple for Wyze Cam v3.
+    wyze-cam-setup-button.png
+    Once the light is solid blue, release the Setup button and wait for 3-4 minutes. The camera will reboot, and the status light will change during this time.
+
+    Note: The "Solid Blue" in this case is not the same as the one normally seen on the cameras. It would be lighter and yellowish on Wyze Cam v2 and Pan and purple on Wyze Cam v3.
+
+    Once this process is finished, you should see the Wyze Cam in your Home tab without going through the setup process as long as it was previously paired with your account.
+
+How to start using RTSP
+
+    Once your Wyze Cam is back online, you can access the RTSP function from the live stream (Wyze app version 2.3 or later) under Settings -> Advanced Settings -> RTSP
+    The app will automatically check if the installed firmware version is RTSP compatible. If not, please repeat the installation process above.
+    Next, turn on the RTSP toggle
+    You'll be prompted to set up a username and password for this Wyze Cam. Both the username and password should be 4 – 10 characters without special characters (only a-z, and 0-9)
+        PLEASE NOTE - This username and password is unique to just this camera. Please either use something that's easy to remember or take note of them somewhere, as these will be needed to access the camera's stream via RTSP
+    Click “Generate URL”, and the RTSP URL will show on the next screen. Use this for streaming through any RTSP compatible player on the same local network as the Wyze Cam.
+
+Note: Cam Plus is included on the Wyze Cam v3 RTSP firmware. However, there can be video lag if both functions are streaming video at the same time. We do not recommend running Cam Plus on the RTSP firmware.
+Have more questions? Submit a request
