@@ -1,0 +1,10 @@
+.bash_history
+.cache
+.config
+.gnupg
+.local
+.pki
+.ssh
+log/*
+qrcd/*
+snap
