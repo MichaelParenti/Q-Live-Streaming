@@ -4,7 +4,7 @@ Code and setup to stream from Wyse v3s &amp; Cisco WVR210s to Nginx
 This is the code that we used to stream video from Wyse v3 Cameras and 
 Cisco WVR210 cameras.
 
-Basically the ./scriptes/allCameraEncoder.sh script is run.   That script 
+Basically the ./scripts/allCameraEncoder.sh script is run.   That script 
 reads configuration from the files in conf directory.   The script writes 
 the video streams to video.q2022.org nginx server.
 
