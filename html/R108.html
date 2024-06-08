@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Live Streaming</title>
+    <link href="video-js.min.css" rel="stylesheet">
+    <script src="js/video.min.js"></script>
+</head>
+<body>
+<br>R108<br>
+<video id="player1" class="video-js vjs-default-skin" height="480" width="640" controls="true" autoplay="true" preload="auto">
+    <source src="http://video.quizstuff.com:8080/hls/R108.m3u8" type="application/x-mpegURL" />
+</video>
+
+<script>
+  var player = videojs('#player1');
+</script>
+</body>
+</html>
