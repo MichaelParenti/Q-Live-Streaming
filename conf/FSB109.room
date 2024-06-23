@@ -1,6 +1,8 @@
-ROOM=FSB109
-CAMTYPE=Cisco
-IP=10.93.26.31
+ROOM=C102
+CAMTYPE=Wyse
+IP=10.93.128.34
+UN=Camera4
+PWD=myCamera4
 SRVR=alldone
 
 
