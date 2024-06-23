@@ -1,4 +1,4 @@
-# qvideo-streaming
+# Q-Live-Streaming
 Code and setup to stream from Wyse v3s &amp; Cisco WVR210s to Nginx
 
 This is the code that we used to stream video from Wyse v3 Cameras and 
