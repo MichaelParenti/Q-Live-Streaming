@@ -3,7 +3,7 @@ CAMTYPE=Wyse
 IP=10.93.25.129
 UN=Camera20
 PWD=myCamera20
-SRVR=alldone
+SRVR=videod.niceng.com
 
 
 
