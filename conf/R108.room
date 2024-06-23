@@ -1,8 +1,8 @@
 ROOM=R108
 CAMTYPE=Wyse
 IP=10.93.25.104
-UN=Camera10
-PWD=myCamera10
+UN=Camera19
+PWD=myCamera19
 SRVR=video.niceng.com
 
 

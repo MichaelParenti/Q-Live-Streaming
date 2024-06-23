@@ -1,8 +1,8 @@
 ROOM=CM118
 CAMTYPE=Wyse
 IP=10.93.25.95
-UN=qtest
-PWD=qtest
+UN=Camera3
+PWD=myCamera3
 SRVR=videoe.niceng.com
 
 

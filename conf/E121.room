@@ -1,8 +1,8 @@
 ROOM=E121
 CAMTYPE=Wyse
 IP=10.93.25.125
-UN=Camera17
-PWD=myCamera17
+UN=Camera12
+PWD=myCamera12
 SRVR=videod.niceng.com
 
 

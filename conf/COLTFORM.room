@@ -1,8 +1,8 @@
 ROOM=COLTFORM
 CAMTYPE=Wyse
 IP=10.93.25.127
-UN=Camera18
-PWD=myCamera18
+UN=Camera9
+PWD=myCamera9
 SRVR=videod.niceng.com
 
 
