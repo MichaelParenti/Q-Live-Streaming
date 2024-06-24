@@ -3,7 +3,7 @@ CAMTYPE=Wyse
 IP=10.93.25.129
 UN=Camera8
 PWD=myCamera8
-SRVR=videod.niceng.com
+SRVR=qvideod.niceng.com
 
 
 
