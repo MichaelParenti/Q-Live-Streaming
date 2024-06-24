@@ -1,6 +1,6 @@
 ROOM=T313
 CAMTYPE=Wyse
-IP=10.93.24.157
+IP=192.168.57.72
 UN=Camera17
 PWD=myCamera17
 SRVR=qvideoc.niceng.com

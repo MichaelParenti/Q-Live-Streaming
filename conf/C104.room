@@ -1,6 +1,6 @@
 ROOM=C204
 CAMTYPE=Wyse
-IP=10.93.25.103
+IP=192.168.57.57
 UN=Camera7
 PWD=myCamera7
 SRVR=qvideoe.niceng.com

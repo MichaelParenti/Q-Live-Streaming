@@ -1,6 +1,6 @@
 ROOM=CM128
 CAMTYPE=Wyse
-IP=10.93.24.72
+IP=192.168.57.
 UN=Camera4
 PWD=myCamera4
 SRVR=qvideoe.niceng.com

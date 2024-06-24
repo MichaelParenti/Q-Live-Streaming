@@ -1,6 +1,6 @@
 ROOM=FCC
 CAMTYPE=Wyse
-IP=10.93.25.121
+IP=192.168.57.
 UN=Camera23
 PWD=myCamera23
 SRVR=qvideob.niceng.com

@@ -1,6 +1,6 @@
 ROOM=F201
 CAMTYPE=Wyse
-IP=10.93.25.123
+IP=192.168.57.80
 UN=Camera24
 PWD=myCamera24
 SRVR=qvideob.niceng.com
