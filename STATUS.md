@@ -5,3 +5,5 @@
 - Room 23 (FCC)
 - Room 26 (FSB102)
 - Room 11 (E114) - authorization needed
+- Room 15 (T106) - authorization needed
+- Room 28 (C101) - authorization needed
