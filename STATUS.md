@@ -4,3 +4,4 @@
 - Room 21 (R111)
 - Room 23 (FCC)
 - Room 26 (FSB102)
+- Room 11 (E114) - authorization needed
