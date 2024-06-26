@@ -100,6 +100,8 @@ while [ $i -gt -1 ]; do
             # If there is a log file, get it's size
             if [ -f "$LOG_FILE" ]; then
                 stat -c%s "$LOG_FILE"
+            else
+                return 0
             fi
         }
 
@@ -109,9 +111,11 @@ while [ $i -gt -1 ]; do
         if [ -z $PREVIOUS_SIZE["$LOG_KEY"] ]; then
             echo "DEBUG: First time through the loop for $LOG_FILE"
         else
-            echo "NOT first time through the loop for $LOG_FILE, checking size and maybe killing $PID for $BASE."
+            echo "NOT first time through the loop for $LOG_FILE, checking size and maybe killing PID: $PID for $BASE."
+            echo "The LOG_KEY is: $LOG_KEY"
+            echo "The previous size value for this key is: ${PREVIOUS_SIZE[$LOG_KEY]:-0}"
             # If the current size is not equal to the previous size...
-            if [ "$CURRENT_SIZE" -eq "${PREVIOUS_SIZE[$LOG_KEY]}" ]; then
+            if [ "$CURRENT_SIZE" -eq "${PREVIOUS_SIZE[$LOG_KEY]:-0}" ]; then
                 # Find the Process ID (PID) of the $BASE process
                 PIDS=$(ps aux | grep "$BASE" | grep -v grep | awk '{print $2}')
 
