@@ -60,7 +60,7 @@ while [ $i -gt -1 ]; do
                 ## The following line is how we did it at Q2022 with NGINX
                 exec ffmpeg -t $DATETIMEDIFF -re -i http://$IP/img/video.asf -vf "scale=2*iw:-1, crop=iw/2:ih/2" -vcodec libx264 -vprofile baseline -acodec aac -strict -2 -f flv rtmp://video.quizstuff.com/show/$BASE 2>>log/$BASE-$(date +%y%m%d).slog 1</dev/null &
             elif [ $CAMTYPE = 'wyse' ]; then
-                	exec ffmpeg -t $DATETIMEDIFF -i rtsp://$UN:$PWD@$IP/live -vcodec libx264 -vprofile baseline -acodec aac -strict -2 -f flv rtmp://video.quizstuff.com/show/$BASE 2>>log/$BASE-`date +%y%m%d`.slog &
+                #	exec ffmpeg -t $DATETIMEDIFF -i rtsp://$UN:$PWD@$IP/live -vcodec libx264 -vprofile baseline -acodec aac -strict -2 -f flv rtmp://video.quizstuff.com/show/$BASE 2>>log/$BASE-`date +%y%m%d`.slog &
                 exec ffmpeg -t $DATETIMEDIFF -i rtsp://$UN:$PWD@$IP/live -vcodec libx264 -s 768x432 -acodec aac -f flv rtmp://video.quizstuff.com/show/$BASE 2>>log/$BASE-$(date +%y%m%d).slog 1</dev/null &
             fi
             sleep 2
