@@ -60,7 +60,7 @@ while [ $i -gt -1 ]; do
                 ## The following line is how we did it at Q2022 with NGINX
                 exec ffmpeg -t $DATETIMEDIFF -re -i http://$IP/img/video.asf -vf "scale=2*iw:-1, crop=iw/2:ih/2" -vcodec libx264 -vprofile baseline -acodec aac -strict -2 -f flv rtmp://video.quizstuff.com/show/$BASE 2>>log/$BASE-$(date +%y%m%d).test.slog 1</dev/null &
             elif [ $CAMTYPE = 'wyse' ]; then
-                #	exec ffmpeg -t $DATETIMEDIFF -i rtsp://$UN:$PWD@$IP/live -vcodec libx264 -vprofile baseline -acodec aac -strict -2 -f flv rtmp://video.quizstuff.com/show/$BASE 2>>log/$BASE-`date +%y%m%d`.slog &
+                	exec ffmpeg -t $DATETIMEDIFF -i rtsp://$UN:$PWD@$IP/live -vcodec libx264 -vprofile baseline -acodec aac -strict -2 -f flv rtmp://video.quizstuff.com/show/$BASE 2>>log/$BASE-`date +%y%m%d`.slog &
                 exec ffmpeg -t $DATETIMEDIFF -i rtsp://$UN:$PWD@$IP/live -vcodec libx264 -s 768x432 -acodec aac -f flv rtmp://video.quizstuff.com/show/$BASE 2>>log/$BASE-$(date +%y%m%d).test.slog 1</dev/null &
             fi
             sleep 2
@@ -75,7 +75,7 @@ while [ $i -gt -1 ]; do
             if [ $CAMTYPE = "ciscoz" ]; then
                 exec ffmpeg -t $DATETIMEDIFF -re -i http://$IP/img/video.asf -b 1024k -s 640x480 -acodec libmp3lame -ar 11025 -ab 32k -async 3200 -r 15 -f flv qrcd/$BASE'_'$(date +%y%m%d%H%M).flv 2>>log/$BASE-$(date +%y%m%d).log 1</dev/null &
             elif [ $CAMTYPE = "wysez" ]; then
-                #	     exec ffmpeg -t $DATETIMEDIFF -i rtsp://$UN:$PWD:qtest@$IP/live -f mp4 qrcd/$BASE'_'`date +%y%m%d%H%M`.mp4 2>>log/$BASE-`date +%y%m%d`.log &
+                	     exec ffmpeg -t $DATETIMEDIFF -i rtsp://$UN:$PWD:qtest@$IP/live -f mp4 qrcd/$BASE'_'`date +%y%m%d%H%M`.mp4 2>>log/$BASE-`date +%y%m%d`.log &
                 exec ffmpeg -t $DATETIMEDIFF -i rtsp://$UN:$PWD@$IP/live -b 1024k -acodec libmp3lame -ar 11025 -ab 32k -async 3200 -f flv qrcd/$BASE'_'$(date +%y%m%d%H%M).flv 2>>log/$BASE-$(date +%y%m%d).log 1</dev/null &
             fi
             sleep 2
@@ -129,7 +129,7 @@ while [ $i -gt -1 ]; do
                     # Kill the process
                     for PID in $PIDS; do
                         kill $PID
-                        echo "DEBUG: WOULD HAVE KILLED PID $PID for BASE $BASE"
+                        # echo "DEBUG: WOULD HAVE KILLED PID $PID for BASE $BASE"
                         if [ $? -eq 0 ]; then
                             echo "Process $PID killed."
                         else
