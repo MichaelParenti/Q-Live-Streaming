@@ -121,7 +121,7 @@ while [ $i -gt -1 ]; do
         if [ -z $PREVIOUS_SIZE["$LOG_FILE"] ]; then
             echo "DEBUG: First time through the loop for $LOG_FILE"
             # Set previous size to the current size
-            # PREVIOUS_SIZE["$LOG_FILE"]=$CURRENT_SIZE
+            PREVIOUS_SIZE["$LOG_FILE"]=$CURRENT_SIZE
         else
             echo "NOT first time through the loop for $LOG_FILE, checking size and maybe killing PID: $PID for $BASE."
             # If the current size is not equal to the previous size...
@@ -145,7 +145,7 @@ while [ $i -gt -1 ]; do
                     done
                 fi
                 # Set previous size to the current size
-                # PREVIOUS_SIZE["$LOG_FILE"]=$CURRENT_SIZE
+                PREVIOUS_SIZE["$LOG_FILE"]=$CURRENT_SIZE
             fi
         fi
 
