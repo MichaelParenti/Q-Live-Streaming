@@ -60,7 +60,7 @@ while [ $i -gt -1 ]; do
                 ## The following line is how we did it at Q2022 with NGINX
                 exec ffmpeg -t $DATETIMEDIFF -re -i http://$IP/img/video.asf -vf "scale=2*iw:-1, crop=iw/2:ih/2" -vcodec libx264 -vprofile baseline -acodec aac -strict -2 -f flv rtmp://video.quizstuff.com/show/$BASE 2>>log/$BASE-$(date +%y%m%d).slog 1</dev/null &
             elif [ $CAMTYPE = 'wyse' ]; then
-                #	exec ffmpeg -t $DATETIMEDIFF -i rtsp://$UN:$PWD@$IP/live -vcodec libx264 -vprofile baseline -acodec aac -strict -2 -f flv rtmp://video.quizstuff.com/show/$BASE 2>>log/$BASE-`date +%y%m%d`.slog &
+                #   exec ffmpeg -t $DATETIMEDIFF -i rtsp://$UN:$PWD@$IP/live -vcodec libx264 -vprofile baseline -acodec aac -strict -2 -f flv rtmp://video.quizstuff.com/show/$BASE 2>>log/$BASE-$(date +%y%m%d).slog &
                 exec ffmpeg -t $DATETIMEDIFF -i rtsp://$UN:$PWD@$IP/live -vcodec libx264 -s 768x432 -acodec aac -f flv rtmp://video.quizstuff.com/show/$BASE 2>>log/$BASE-$(date +%y%m%d).slog 1</dev/null &
             fi
             sleep 2
@@ -75,7 +75,7 @@ while [ $i -gt -1 ]; do
             if [ $CAMTYPE = "ciscoz" ]; then
                 exec ffmpeg -t $DATETIMEDIFF -re -i http://$IP/img/video.asf -b 1024k -s 640x480 -acodec libmp3lame -ar 11025 -ab 32k -async 3200 -r 15 -f flv qrcd/$BASE'_'$(date +%y%m%d%H%M).flv 2>>log/$BASE-$(date +%y%m%d).log 1</dev/null &
             elif [ $CAMTYPE = "wysez" ]; then
-                	     exec ffmpeg -t $DATETIMEDIFF -i rtsp://$UN:$PWD:qtest@$IP/live -f mp4 qrcd/$BASE'_'`date +%y%m%d%H%M`.mp4 2>>log/$BASE-`date +%y%m%d`.log &
+                #   exec ffmpeg -t $DATETIMEDIFF -i rtsp://$UN:$PWD:qtest@$IP/live -f mp4 qrcd/$BASE'_'$(date +%y%m%d%H%M).mp4 2>>log/$BASE-$(date +%y%m%d).log &
                 exec ffmpeg -t $DATETIMEDIFF -i rtsp://$UN:$PWD@$IP/live -b 1024k -acodec libmp3lame -ar 11025 -ab 32k -async 3200 -f flv qrcd/$BASE'_'$(date +%y%m%d%H%M).flv 2>>log/$BASE-$(date +%y%m%d).log 1</dev/null &
             fi
             sleep 2
@@ -107,37 +107,35 @@ while [ $i -gt -1 ]; do
         # if [ -z $PREVIOUS_SIZE["$LOG_FILE"] ]; then
         #     echo "No log file $LOG_FILE exists. Please check configuration and script."
         # else
-            echo "Checking log '$LOG_FILE' size delta for $BASE"
-            # If the current size is not equal to the previous size...
-            if [[ "$CURRENT_SIZE" -eq "${PREVIOUS_SIZE["$LOG_FILE"]}" ]]; then
-                # Find the Process ID (PID) of the $BASE process
-                PIDS=$(ps aux | grep "$BASE" | grep -v grep | awk '{print $2}')
+        echo "Checking log '$LOG_FILE' size delta for $BASE"
+        # If the current size is not equal to the previous size...
+        if [[ "$CURRENT_SIZE" -eq "${PREVIOUS_SIZE["$LOG_FILE"]}" ]]; then
+            # Find the Process ID (PID) of the $BASE process
+            PIDS=$(ps aux | grep "$BASE" | grep -v grep | awk '{print $2}')
 
-                # Check if any PIDs were not found
-                if [ -z "$PIDS" ]; then
-                    echo "No process named $BASE found to kill."
-                else
-                    # Kill the process
-                    for PID in $PIDS; do
-                        kill $PID
-                        if [ $? -eq 0 ]; then
-                            echo "Process $PID killed (likely hung)."
-                        else
-                            echo "Failed to kill likely hung process $PID."
-                        fi
-                    done
-                fi
-
+            # Check if any PIDs were not found
+            if [ -z "$PIDS" ]; then
+                echo "$(date +"%Y-%m-%d %H:%M:%S.%3N") No process named $BASE found to kill." | tee -a log/$BASE-$(date +%y%m%d).io.log
+            else
+                # Kill the process
+                for PID in $PIDS; do
+                    kill $PID
+                    if [ $? -eq 0 ]; then
+                        echo "$(date +"%Y-%m-%d %H:%M:%S.%3N") Process $PID killed (likely hung)." | tee -a log/$BASE-$(date +%y%m%d).io.log
+                    else
+                        echo "$(date +"%Y-%m-%d %H:%M:%S.%3N") Failed to kill likely hung process $PID." | tee -a log/$BASE-$(date +%y%m%d).io.log
+                    fi
+                done
             fi
-            # Set previous size to the current size
-            PREVIOUS_SIZE["$LOG_FILE"]=$CURRENT_SIZE
-            # echo "Current and previous sizes are BOTTOM:"
-            # echo $CURRENT_SIZE
-            # # PREVIOUS_SIZE["$LOG_FILE"]=$CURRENT_SIZE
-            # echo "${PREVIOUS_SIZE["$LOG_FILE"]}"
+
+        fi
+        # Set previous size to the current size
+        PREVIOUS_SIZE["$LOG_FILE"]=$CURRENT_SIZE
+        # echo "Current and previous sizes are BOTTOM:"
+        # echo $CURRENT_SIZE
+        # # PREVIOUS_SIZE["$LOG_FILE"]=$CURRENT_SIZE
+        # echo "${PREVIOUS_SIZE["$LOG_FILE"]}"
         # fi
-
-
 
         # go back to the top
     done
@@ -147,57 +145,57 @@ while [ $i -gt -1 ]; do
     sleep 10
 done
 
-# Do the following every 30 seconds
-while true; do
+# # Do the following every 30 seconds
+# while true; do
 
-    # Set the default size of $LOG_FILE to -1 (if there is no log file)
-    PREVIOUS_SIZE=-1
+#     # Set the default size of $LOG_FILE to -1 (if there is no log file)
+#     PREVIOUS_SIZE=-1
 
-    sleep 30
-done
+#     sleep 30
+# done
 
-# Run this loop every 30 seconds
-while true; do
+# # Run this loop every 30 seconds
+# while true; do
 
-    # Get the log file of $BASE
-    LOG_FILE="~/log/$BASE-$(date +%y%m%d).slog"
+#     # Get the log file of $BASE
+#     LOG_FILE="~/log/$BASE-$(date +%y%m%d).slog"
 
-    # Function to get the size of the log file
-    get_log_file_size() {
-        # If there is a log file, get it's size
-        if [ -f "$LOG_FILE" ]; then
-            stat -c%s "$LOG_FILE"
-        fi
-    }
+#     # Function to get the size of the log file
+#     get_log_file_size() {
+#         # If there is a log file, get it's size
+#         if [ -f "$LOG_FILE" ]; then
+#             stat -c%s "$LOG_FILE"
+#         fi
+#     }
 
-    # Set the current size
-    CURRENT_SIZE=$(get_log_file_size)
+#     # Set the current size
+#     CURRENT_SIZE=$(get_log_file_size)
 
-    # If the current size is not equal to the previous size...
-    if [ "$CURRENT_SIZE" -ne "$PREVIOUS_SIZE" ]; then
-        # Find the Process ID (PID) of the $BASE process
-        PIDS=$(ps aux | grep "$BASE" | grep -v grep | awk '{print $2}')
+#     # If the current size is not equal to the previous size...
+#     if [ "$CURRENT_SIZE" -ne "$PREVIOUS_SIZE" ]; then
+#         # Find the Process ID (PID) of the $BASE process
+#         PIDS=$(ps aux | grep "$BASE" | grep -v grep | awk '{print $2}')
 
-        # Check if any PIDs were not found
-        if [ -z "$PIDS" ]; then
-            echo "No process named $PROCESS_NAME found."
-        else
-            # Kill the process
-            for PID in $PIDS; do
-                kill $PID
-                if [ $? -eq 0 ]; then
-                    echo "Process $PID killed."
-                else
-                    echo "Failed to kill process $PID."
-                fi
-            done
-        fi
+#         # Check if any PIDs were not found
+#         if [ -z "$PIDS" ]; then
+#             echo "No process named $PROCESS_NAME found."
+#         else
+#             # Kill the process
+#             for PID in $PIDS; do
+#                 kill $PID
+#                 if [ $? -eq 0 ]; then
+#                     echo "Process $PID killed."
+#                 else
+#                     echo "Failed to kill process $PID."
+#                 fi
+#             done
+#         fi
 
-        # Set previous size to the current size
-        PREVIOUS_SIZE=$CURRENT_SIZE
+#         # Set previous size to the current size
+#         PREVIOUS_SIZE=$CURRENT_SIZE
 
-    fi
+#     fi
 
-    # Wait 30 seconds
-    sleep 30
-done
+#     # Wait 30 seconds
+#     sleep 30
+# done
