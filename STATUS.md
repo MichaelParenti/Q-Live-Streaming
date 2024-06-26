@@ -1,2 +1,2 @@
-# OFFLINE:
-- Room 6 (C102) - no WiFi
+# ISSUES:
+- Everything is working at the moment
