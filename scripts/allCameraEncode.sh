@@ -100,16 +100,17 @@ while [ $i -gt -1 ]; do
 
         # Function to get the size of a file
         get_file_size() {
-            echo "LOG FILE: $1"
-            if [ -f "$1" ]; then
-                stat -c%s "$1"
+            # echo "LOG FILE: "
+            # echo "$1"
+            if [ -f "$LOG_FILE" ]; then
+                stat -c%s "$LOG_FILE"
             else
                 echo 0
             fi
         }
 
         # Set the current size
-        CURRENT_SIZE=$(get_file_size "$LOG_FILE")
+        CURRENT_SIZE=$(get_file_size)
 
         echo "The LOG_KEY is: $LOG_KEY and current, previous sizes are:"
         echo $CURRENT_SIZE
