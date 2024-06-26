@@ -145,7 +145,7 @@ while [ $i -gt -1 ]; do
                     done
                 fi
                 # Set previous size to the current size
-                PREVIOUS_SIZE["$LOG_FILE"]=$CURRENT_SIZE
+                PREVIOUS_SIZE["$LOG_FILE"]=$CURRENT_SIZE+1
             fi
         fi
 
