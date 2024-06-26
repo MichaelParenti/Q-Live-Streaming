@@ -110,7 +110,7 @@ while [ $i -gt -1 ]; do
         else
             echo "NOT first time through the loop for $LOG_FILE, checking size and maybe killing $PID for $BASE."
             # If the current size is not equal to the previous size...
-            if [ $CURRENT_SIZE -eq $PREVIOUS_SIZE["$LOG_FILE"] ]; then
+            if [ "$CURRENT_SIZE" -eq "${PREVIOUS_SIZE[$LOG_FILE]}" ]; then
                 # Find the Process ID (PID) of the $BASE process
                 PIDS=$(ps aux | grep "$BASE" | grep -v grep | awk '{print $2}')
 
