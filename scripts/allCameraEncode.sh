@@ -55,10 +55,10 @@ while [ $i -gt -1 ]; do
             # Start up the new ones
             if [ $CAMTYPE = "cisco" ]; then
                 ## The following line is how we did it at Q2022 with NGINX
-                exec ffmpeg -t $DATETIMEDIFF -re -i http://$IP/img/video.asf -vf "scale=2*iw:-1, crop=iw/2:ih/2" -vcodec libx264 -vprofile baseline -acodec aac -strict -2 -f flv rtmp://video.quizstuff.com/show/$BASE 2>>log/$BASE-$(date +%y%m%d).slog 1</dev/null &
+                exec ffmpeg -t $DATETIMEDIFF -re -i http://$IP/img/video.asf -vf "scale=2*iw:-1, crop=iw/2:ih/2" -vcodec libx264 -vprofile baseline -acodec aac -strict -2 -f flv rtmp://video.quizstuff.com/show/$BASE 2>>log/$BASE-$(date +%y%m%d).test.slog 1</dev/null &
             elif [ $CAMTYPE = 'wyse' ]; then
                 #	exec ffmpeg -t $DATETIMEDIFF -i rtsp://$UN:$PWD@$IP/live -vcodec libx264 -vprofile baseline -acodec aac -strict -2 -f flv rtmp://video.quizstuff.com/show/$BASE 2>>log/$BASE-`date +%y%m%d`.slog &
-                exec ffmpeg -t $DATETIMEDIFF -i rtsp://$UN:$PWD@$IP/live -vcodec libx264 -s 768x432 -acodec aac -f flv rtmp://video.quizstuff.com/show/$BASE 2>>log/$BASE-$(date +%y%m%d).slog 1</dev/null &
+                exec ffmpeg -t $DATETIMEDIFF -i rtsp://$UN:$PWD@$IP/live -vcodec libx264 -s 768x432 -acodec aac -f flv rtmp://video.quizstuff.com/show/$BASE 2>>log/$BASE-$(date +%y%m%d).test.slog 1</dev/null &
             fi
             sleep 2
             RED=1
@@ -108,9 +108,9 @@ while [ $i -gt -1 ]; do
         if [ -z $PREVIOUS_SIZE["$LOG_FILE"] ]; then
             echo "DEBUG: First time through the loop for $LOG_FILE"
         else
-            echo "NOT first time through the loop for $LOG_FILE, checking size and maybe killing PID for $BASE."
+            echo "NOT first time through the loop for $LOG_FILE, checking size and maybe killing $PID for $BASE."
             # If the current size is not equal to the previous size...
-            if [ "$CURRENT_SIZE" -eq $PREVIOUS_SIZE["$LOG_FILE"] ]; then
+            if [ $CURRENT_SIZE -eq $PREVIOUS_SIZE["$LOG_FILE"] ]; then
                 # Find the Process ID (PID) of the $BASE process
                 PIDS=$(ps aux | grep "$BASE" | grep -v grep | awk '{print $2}')
 
