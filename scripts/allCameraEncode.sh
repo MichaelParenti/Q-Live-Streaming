@@ -109,13 +109,11 @@ while [ $i -gt -1 ]; do
         }
 
         # Set the current size
-        # CURRENT_SIZE=$(get_file_size)
         CURRENT_SIZE=$(stat -c '%s' "$LOG_FILE")
-        # sz=$(stat -c '%s' myfile)
 
         echo "The LOG_KEY is: $LOG_KEY and current, previous sizes are:"
         echo $CURRENT_SIZE
-        PREVIOUS_SIZE["$LOG_FILE"]=$CURRENT_SIZE
+        # PREVIOUS_SIZE["$LOG_FILE"]=$CURRENT_SIZE
         echo "${PREVIOUS_SIZE["$LOG_FILE"]}"
 
         if [ -z $PREVIOUS_SIZE["$LOG_FILE"] ]; then
@@ -145,7 +143,7 @@ while [ $i -gt -1 ]; do
                     done
                 fi
                 # Set previous size to the current size
-                PREVIOUS_SIZE["$LOG_FILE"]=$CURRENT_SIZE+1
+                PREVIOUS_SIZE["$LOG_FILE"]=$CURRENT_SIZE
             fi
         fi
 
