@@ -142,14 +142,15 @@ while [ $i -gt -1 ]; do
                         fi
                     done
                 fi
-                # Set previous size to the current size
-                echo "SHOULD BE ASSIGNING STUPID CURRENT TO PREVIOUS SIZE"
-                PREVIOUS_SIZE["$LOG_FILE"]=$CURRENT_SIZE
-                echo "Current and previous sizes are BOTTOM:"
-                echo $CURRENT_SIZE
-                # PREVIOUS_SIZE["$LOG_FILE"]=$CURRENT_SIZE
-                echo "${PREVIOUS_SIZE["$LOG_FILE"]}"
+
             fi
+            # Set previous size to the current size
+            echo "SHOULD BE ASSIGNING STUPID CURRENT TO PREVIOUS SIZE"
+            PREVIOUS_SIZE["$LOG_FILE"]=$CURRENT_SIZE
+            echo "Current and previous sizes are BOTTOM:"
+            echo $CURRENT_SIZE
+            # PREVIOUS_SIZE["$LOG_FILE"]=$CURRENT_SIZE
+            echo "${PREVIOUS_SIZE["$LOG_FILE"]}"
         fi
 
 
