@@ -116,7 +116,7 @@ while [ $i -gt -1 ]; do
         echo "The LOG_KEY is: $LOG_KEY and current, previous sizes are:"
         echo $CURRENT_SIZE
         PREVIOUS_SIZE["$LOG_FILE"]=0
-        echo "${PREVIOUS_SIZE["$LOG_FILE"]}"
+        echo "$PREVIOUS_SIZE["$LOG_FILE"]"
 
         if [ -z $PREVIOUS_SIZE["$LOG_FILE"] ]; then
             echo "DEBUG: First time through the loop for $LOG_FILE"
