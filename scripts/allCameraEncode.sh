@@ -97,17 +97,6 @@ while [ $i -gt -1 ]; do
         # Get the log file of $BASE
         LOG_FILE="log/$BASE-$(date +%y%m%d).slog"
 
-        # Function to get the size of a file
-        get_file_size() {
-            # echo "LOG FILE: "
-            # echo "$1"
-            if [ -f "$LOG_FILE" ]; then
-                stat -c%s "$LOG_FILE"
-            else
-                echo 0
-            fi
-        }
-
         # Set the current size
         CURRENT_SIZE=$(stat -c '%s' "$LOG_FILE")
 
@@ -133,7 +122,7 @@ while [ $i -gt -1 ]; do
                 else
                     # Kill the process
                     for PID in $PIDS; do
-                        # kill $PID
+                        kill $PID
                         # echo "DEBUG: WOULD HAVE KILLED PID $PID for BASE $BASE"
                         if [ $? -eq 0 ]; then
                             echo "Process $PID killed."
