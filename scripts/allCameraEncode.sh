@@ -93,6 +93,7 @@ while [ $i -gt -1 ]; do
 
         # Get the log file of $BASE
         LOG_FILE="~/log/$BASE-$(date +%y%m%d).slog"
+        LOG_KEY="$BASE-$(date +%y%m%d)"
 
         # Function to get the size of the log file
         get_log_file_size() {
@@ -105,12 +106,12 @@ while [ $i -gt -1 ]; do
         # Set the current size
         CURRENT_SIZE=$(get_log_file_size)
 
-        if [ -z $PREVIOUS_SIZE["$LOG_FILE"] ]; then
+        if [ -z $PREVIOUS_SIZE["$LOG_KEY"] ]; then
             echo "DEBUG: First time through the loop for $LOG_FILE"
         else
             echo "NOT first time through the loop for $LOG_FILE, checking size and maybe killing $PID for $BASE."
             # If the current size is not equal to the previous size...
-            if [ "$CURRENT_SIZE" -eq "${PREVIOUS_SIZE[$LOG_FILE]}" ]; then
+            if [ "$CURRENT_SIZE" -eq "${PREVIOUS_SIZE[$LOG_KEY]}" ]; then
                 # Find the Process ID (PID) of the $BASE process
                 PIDS=$(ps aux | grep "$BASE" | grep -v grep | awk '{print $2}')
 
@@ -130,7 +131,7 @@ while [ $i -gt -1 ]; do
                     done
                 fi
                 # Set previous size to the current size
-                PREVIOUS_SIZE["$LOG_FILE"]=$CURRENT_SIZE
+                PREVIOUS_SIZE["$LOG_KEY"]=$CURRENT_SIZE
             fi
         fi
 
