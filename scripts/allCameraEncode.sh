@@ -96,7 +96,6 @@ while [ $i -gt -1 ]; do
 
         # Get the log file of $BASE
         LOG_FILE="~/log/$BASE-$(date +%y%m%d).slog"
-        LOG_KEY="$BASE-$(date +%y%m%d)"
 
         # Function to get the size of a file
         get_file_size() {
@@ -110,7 +109,9 @@ while [ $i -gt -1 ]; do
         }
 
         # Set the current size
-        CURRENT_SIZE=$(get_file_size)
+        # CURRENT_SIZE=$(get_file_size)
+        CURRENT_SIZE=$(stat -c '%s' "$LOG_FILE")
+        # sz=$(stat -c '%s' myfile)
 
         echo "The LOG_KEY is: $LOG_KEY and current, previous sizes are:"
         echo $CURRENT_SIZE
