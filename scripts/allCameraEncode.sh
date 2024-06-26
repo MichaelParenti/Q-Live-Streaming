@@ -100,17 +100,15 @@ while [ $i -gt -1 ]; do
         # Set the current size
         CURRENT_SIZE=$(stat -c '%s' "$LOG_FILE")
 
-        echo "Current and previous sizes are TOP:"
+        echo "Current and previous log file sizes for $BASE are:"
         echo $CURRENT_SIZE
         # PREVIOUS_SIZE["$LOG_FILE"]=$CURRENT_SIZE
         echo "${PREVIOUS_SIZE["$LOG_FILE"]}"
 
-        if [ -z $PREVIOUS_SIZE["$LOG_FILE"] ]; then
-            echo "DEBUG: First time through the loop for $LOG_FILE"
-            # Set previous size to the current size
-            PREVIOUS_SIZE["$LOG_FILE"]=$CURRENT_SIZE
-        else
-            echo "NOT first time through the loop for $LOG_FILE, checking size and maybe killing PID: $PID for $BASE."
+        # if [ -z $PREVIOUS_SIZE["$LOG_FILE"] ]; then
+        #     echo "No log file $LOG_FILE exists. Please check configuration and script."
+        # else
+            echo "Checking $LOG_FILE size for $BASE"
             # If the current size is not equal to the previous size...
             if [[ "$CURRENT_SIZE" -eq "${PREVIOUS_SIZE["$LOG_FILE"]}" ]]; then
                 # Find the Process ID (PID) of the $BASE process
@@ -118,29 +116,27 @@ while [ $i -gt -1 ]; do
 
                 # Check if any PIDs were not found
                 if [ -z "$PIDS" ]; then
-                    echo "No process named $BASE found."
+                    echo "No process named $BASE found to kill."
                 else
                     # Kill the process
                     for PID in $PIDS; do
                         kill $PID
-                        # echo "DEBUG: WOULD HAVE KILLED PID $PID for BASE $BASE"
                         if [ $? -eq 0 ]; then
-                            echo "Process $PID killed."
+                            echo "Process $PID killed (likely hung)."
                         else
-                            echo "Failed to kill process $PID."
+                            echo "Failed to kill likely hung process $PID."
                         fi
                     done
                 fi
 
             fi
             # Set previous size to the current size
-            # echo "SHOULD BE ASSIGNING STUPID CURRENT TO PREVIOUS SIZE"
             PREVIOUS_SIZE["$LOG_FILE"]=$CURRENT_SIZE
             # echo "Current and previous sizes are BOTTOM:"
             # echo $CURRENT_SIZE
             # # PREVIOUS_SIZE["$LOG_FILE"]=$CURRENT_SIZE
             # echo "${PREVIOUS_SIZE["$LOG_FILE"]}"
-        fi
+        # fi
 
 
 
