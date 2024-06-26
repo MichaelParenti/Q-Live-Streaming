@@ -128,7 +128,7 @@ while [ $i -gt -1 ]; do
                 else
                     # Kill the process
                     for PID in $PIDS; do
-                        # kill $PID
+                        kill $PID
                         echo "DEBUG: WOULD HAVE KILLED PID $PID for BASE $BASE"
                         if [ $? -eq 0 ]; then
                             echo "Process $PID killed."
