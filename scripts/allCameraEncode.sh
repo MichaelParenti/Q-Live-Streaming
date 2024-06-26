@@ -95,7 +95,7 @@ while [ $i -gt -1 ]; do
         # check log file sizes to determine those that may be failing and terminate those
 
         # Get the log file of $BASE
-        LOG_FILE="~/log/$BASE-$(date +%y%m%d).slog"
+        LOG_FILE="log/$BASE-$(date +%y%m%d).slog"
 
         # Function to get the size of a file
         get_file_size() {
