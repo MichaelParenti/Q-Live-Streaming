@@ -111,7 +111,7 @@ while [ $i -gt -1 ]; do
         # Set the current size
         CURRENT_SIZE=$(stat -c '%s' "$LOG_FILE")
 
-        echo "The LOG_KEY is: $LOG_KEY and current, previous sizes are:"
+        echo "Current and previous sizes are TOP:"
         echo $CURRENT_SIZE
         # PREVIOUS_SIZE["$LOG_FILE"]=$CURRENT_SIZE
         echo "${PREVIOUS_SIZE["$LOG_FILE"]}"
@@ -143,7 +143,12 @@ while [ $i -gt -1 ]; do
                     done
                 fi
                 # Set previous size to the current size
+                echo "SHOULD BE ASSIGNING STUPID CURRENT TO PREVIOUS SIZE"
                 PREVIOUS_SIZE["$LOG_FILE"]=$CURRENT_SIZE
+                echo "Current and previous sizes are BOTTOM:"
+                echo $CURRENT_SIZE
+                # PREVIOUS_SIZE["$LOG_FILE"]=$CURRENT_SIZE
+                echo "${PREVIOUS_SIZE["$LOG_FILE"]}"
             fi
         fi
 
