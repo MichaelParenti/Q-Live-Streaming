@@ -100,15 +100,14 @@ while [ $i -gt -1 ]; do
         # Set the current size
         CURRENT_SIZE=$(stat -c '%s' "$LOG_FILE")
 
-        echo "Current and previous log file sizes for $BASE are:"
-        echo $CURRENT_SIZE
-        # PREVIOUS_SIZE["$LOG_FILE"]=$CURRENT_SIZE
-        echo "${PREVIOUS_SIZE["$LOG_FILE"]}"
+        # echo "Current and previous log file sizes for $BASE are:"
+        # echo $CURRENT_SIZE
+        # echo "${PREVIOUS_SIZE["$LOG_FILE"]}"
 
         # if [ -z $PREVIOUS_SIZE["$LOG_FILE"] ]; then
         #     echo "No log file $LOG_FILE exists. Please check configuration and script."
         # else
-            echo "Checking $LOG_FILE size for $BASE"
+            echo "Checking log '$LOG_FILE' size delta for $BASE"
             # If the current size is not equal to the previous size...
             if [[ "$CURRENT_SIZE" -eq "${PREVIOUS_SIZE["$LOG_FILE"]}" ]]; then
                 # Find the Process ID (PID) of the $BASE process
