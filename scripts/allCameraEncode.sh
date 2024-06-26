@@ -58,10 +58,10 @@ while [ $i -gt -1 ]; do
             # Start up the new ones
             if [ $CAMTYPE = "cisco" ]; then
                 ## The following line is how we did it at Q2022 with NGINX
-                exec ffmpeg -t $DATETIMEDIFF -re -i http://$IP/img/video.asf -vf "scale=2*iw:-1, crop=iw/2:ih/2" -vcodec libx264 -vprofile baseline -acodec aac -strict -2 -f flv rtmp://video.quizstuff.com/show/$BASE 2>>log/$BASE-$(date +%y%m%d).test.slog 1</dev/null &
+                exec ffmpeg -t $DATETIMEDIFF -re -i http://$IP/img/video.asf -vf "scale=2*iw:-1, crop=iw/2:ih/2" -vcodec libx264 -vprofile baseline -acodec aac -strict -2 -f flv rtmp://video.quizstuff.com/show/$BASE 2>>log/$BASE-$(date +%y%m%d).slog 1</dev/null &
             elif [ $CAMTYPE = 'wyse' ]; then
                 	exec ffmpeg -t $DATETIMEDIFF -i rtsp://$UN:$PWD@$IP/live -vcodec libx264 -vprofile baseline -acodec aac -strict -2 -f flv rtmp://video.quizstuff.com/show/$BASE 2>>log/$BASE-`date +%y%m%d`.slog &
-                exec ffmpeg -t $DATETIMEDIFF -i rtsp://$UN:$PWD@$IP/live -vcodec libx264 -s 768x432 -acodec aac -f flv rtmp://video.quizstuff.com/show/$BASE 2>>log/$BASE-$(date +%y%m%d).test.slog 1</dev/null &
+                exec ffmpeg -t $DATETIMEDIFF -i rtsp://$UN:$PWD@$IP/live -vcodec libx264 -s 768x432 -acodec aac -f flv rtmp://video.quizstuff.com/show/$BASE 2>>log/$BASE-$(date +%y%m%d).slog 1</dev/null &
             fi
             sleep 2
             RED=1
@@ -134,12 +134,12 @@ while [ $i -gt -1 ]; do
 
             fi
             # Set previous size to the current size
-            echo "SHOULD BE ASSIGNING STUPID CURRENT TO PREVIOUS SIZE"
+            # echo "SHOULD BE ASSIGNING STUPID CURRENT TO PREVIOUS SIZE"
             PREVIOUS_SIZE["$LOG_FILE"]=$CURRENT_SIZE
-            echo "Current and previous sizes are BOTTOM:"
-            echo $CURRENT_SIZE
-            # PREVIOUS_SIZE["$LOG_FILE"]=$CURRENT_SIZE
-            echo "${PREVIOUS_SIZE["$LOG_FILE"]}"
+            # echo "Current and previous sizes are BOTTOM:"
+            # echo $CURRENT_SIZE
+            # # PREVIOUS_SIZE["$LOG_FILE"]=$CURRENT_SIZE
+            # echo "${PREVIOUS_SIZE["$LOG_FILE"]}"
         fi
 
 
