@@ -11,6 +11,9 @@ func_append() {
     output="$str"
 }
 
+# Declare an associative array to hold previous sizes to determine streams that may be failing to terminate
+declare -A PREVIOUS_SIZE
+
 # Do this forever
 i="0"
 while [ $i -gt -1 ]; do
