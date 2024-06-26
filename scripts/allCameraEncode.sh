@@ -111,7 +111,9 @@ while [ $i -gt -1 ]; do
         # Set the current size
         CURRENT_SIZE=$(get_log_file_size)
 
-        echo "The LOG_KEY is: $LOG_KEY"
+        echo "The LOG_KEY is: $LOG_KEY and current, previous sizes are:"
+        echo "$CURRENT_SIZE"
+        echo "${PREVIOUS_SIZE["$LOG_FILE"]}"
 
         if [ -z $PREVIOUS_SIZE["$LOG_FILE"] ]; then
             echo "DEBUG: First time through the loop for $LOG_FILE"
@@ -128,7 +130,7 @@ while [ $i -gt -1 ]; do
                 else
                     # Kill the process
                     for PID in $PIDS; do
-                        kill $PID
+                        # kill $PID
                         # echo "DEBUG: WOULD HAVE KILLED PID $PID for BASE $BASE"
                         if [ $? -eq 0 ]; then
                             echo "Process $PID killed."
