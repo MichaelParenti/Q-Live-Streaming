@@ -100,6 +100,7 @@ while [ $i -gt -1 ]; do
 
         # Function to get the size of a file
         get_file_size() {
+            echo "LOG FILE: $1"
             if [ -f "$1" ]; then
                 stat -c%s "$1"
             else
