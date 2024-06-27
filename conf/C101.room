@@ -3,8 +3,7 @@ CAMTYPE=Wyse
 IP=192.168.57.85
 UN=Camera28
 PWD=myCamera28
-SRVR=alldone
-LAST-SRVR=qvideob.niceng.com
+#SRVR=qvideob.niceng.com
 
 
 
