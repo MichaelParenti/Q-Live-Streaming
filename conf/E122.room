@@ -1,9 +1,9 @@
 ROOM=C102
 CAMTYPE=Wyse
-IP=192.168.57.66
+#IP=192.168.57.66
 UN=Camera13
 PWD=myCamera13
-SRVR=qvideod.niceng.com
+#SRVR=qvideod.niceng.com
 
 
 
