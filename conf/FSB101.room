@@ -1,9 +1,9 @@
 ROOM=FSB101
 CAMTYPE=Wyse
-IP=192.168.57.82
+#IP=192.168.57.82
 UN=Camera25
 PWD=myCamera25
-SRVR=qvideob.niceng.com
+#SRVR=qvideob.niceng.com
 
 
 
