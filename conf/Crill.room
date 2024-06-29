@@ -1,9 +1,9 @@
 ROOM=Crill
 CAMTYPE=Wyse
-IP=192.168.57.50
+#IP=192.168.57.50
 UN=Camera1
 PWD=myCamera1
-SRVR=qvideoe.niceng.com
+#SRVR=qvideoe.niceng.com
 
 
 
