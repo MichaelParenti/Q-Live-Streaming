@@ -2,8 +2,8 @@ ROOM=CM115
 CAMTYPE=Wyse
 #IP=192.168.57.55
 UN=Camera5
-#PWD=myCamera5
-SRVR=qvideoe.niceng.com
+PWD=myCamera5
+#SRVR=qvideoe.niceng.com
 
 
 
