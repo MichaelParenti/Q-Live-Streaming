@@ -1,6 +1,6 @@
 ROOM=LF136
 CAMTYPE=Wyse
-#IP=192.168.57.86
+IP=172.25.248.217
 UN=Camera11
 PWD=myCamera11
 SRVR=qvideob.niceng.com
