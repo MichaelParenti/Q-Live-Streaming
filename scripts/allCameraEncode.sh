@@ -44,7 +44,7 @@ while [ $i -gt -1 ]; do
         # let's go to work
         BASE=$(echo $f | cut --delimiter='/' -f3 | cut --delimiter='.' -f1)
         PSCOUNT=$(ps ax | fgrep $IP | fgrep qrcd | fgrep $BASE | wc -l)
-        STREAMPSCOUNT=$(ps ax | fgrep $IP | fgrep video.quizstuff | fgrep $BASE | wc -l)
+        STREAMPSCOUNT=$(ps ax | fgrep $IP | fgrep video.q2025 | fgrep $BASE | wc -l)
         FLVPSCOUNT=$(ps ax | fgrep $IP | fgrep qrcd | fgrep $BASE | wc -l)
         CAMTYPE=$(echo $CAMTYPE | tr [:upper:] [:lower:])
 
@@ -58,10 +58,10 @@ while [ $i -gt -1 ]; do
             # Start up the new ones
             if [ $CAMTYPE = "cisco" ]; then
                 ## The following line is how we did it at Q2022 with NGINX
-                exec ffmpeg -t $DATETIMEDIFF -re -i http://$IP/img/video.asf -vf "scale=2*iw:-1, crop=iw/2:ih/2" -vcodec libx264 -vprofile baseline -acodec aac -strict -2 -f flv rtmp://video.quizstuff.com/show/$BASE 2>>log/$BASE-$(date +%y%m%d).slog 1</dev/null &
+                exec ffmpeg -t $DATETIMEDIFF -re -i http://$IP/img/video.asf -vf "scale=2*iw:-1, crop=iw/2:ih/2" -vcodec libx264 -vprofile baseline -acodec aac -strict -2 -f flv rtmp://video.q2025.com/show/$BASE 2>>log/$BASE-$(date +%y%m%d).slog 1</dev/null &
             elif [ $CAMTYPE = 'wyse' ]; then
-                #   exec ffmpeg -t $DATETIMEDIFF -i rtsp://$UN:$PWD@$IP/live -vcodec libx264 -vprofile baseline -acodec aac -strict -2 -f flv rtmp://video.quizstuff.com/show/$BASE 2>>log/$BASE-$(date +%y%m%d).slog &
-                exec ffmpeg -t $DATETIMEDIFF -i rtsp://$UN:$PWD@$IP/live -vcodec libx264 -s 768x432 -acodec aac -f flv rtmp://video.quizstuff.com/show/$BASE 2>>log/$BASE-$(date +%y%m%d).slog 1</dev/null &
+                #   exec ffmpeg -t $DATETIMEDIFF -i rtsp://$UN:$PWD@$IP/live -vcodec libx264 -vprofile baseline -acodec aac -strict -2 -f flv rtmp://video.q2025.com/show/$BASE 2>>log/$BASE-$(date +%y%m%d).slog &
+                exec ffmpeg -t $DATETIMEDIFF -i rtsp://$UN:$PWD@$IP/live -vcodec libx264 -s 768x432 -acodec aac -f flv rtmp://video.q2025.com/show/$BASE 2>>log/$BASE-$(date +%y%m%d).slog 1</dev/null &
             fi
             sleep 2
             RED=1
