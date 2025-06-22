@@ -1,6 +1,6 @@
 ROOM=RS202
 CAMTYPE=Wyse
-IP=172.25.227.206
+IP=172.25.221.67
 UN=Camera5
 PWD=myCamera5
 SRVR=qvideoa.niceng.com
