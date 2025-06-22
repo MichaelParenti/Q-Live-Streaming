@@ -1,6 +1,6 @@
 ROOM=BA402
 CAMTYPE=Wyse
-IP=172.25.126.202
+IP=172.25.162.202
 UN=Camera19
 PWD=myCamera19
 SRVR=qvideod.niceng.com
