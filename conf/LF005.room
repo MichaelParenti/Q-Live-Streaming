@@ -1,6 +1,6 @@
 ROOM=LF005
 CAMTYPE=Wyse
-#IP=192.168.57.53
+IP=172.25.239.40
 UN=Camera2
 PWD=myCamera2
 SRVR=qvideoa.niceng.com

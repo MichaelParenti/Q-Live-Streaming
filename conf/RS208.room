@@ -1,6 +1,6 @@
 ROOM=RS208
 CAMTYPE=Wyse
-#IP=192.168.57.55
+IP=177.25.230.85
 UN=Camera6
 PWD=myCamera6
 SRVR=qvideoa.niceng.com
