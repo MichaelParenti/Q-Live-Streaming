@@ -1,6 +1,6 @@
 ROOM=BA001
 CAMTYPE=Wyse
-#IP=192.168.57.54
+IP=172.25.214.2
 UN=Camera13
 PWD=myCamera13
 SRVR=qvideoc.niceng.com
