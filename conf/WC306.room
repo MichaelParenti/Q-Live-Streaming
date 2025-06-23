@@ -1,6 +1,6 @@
 ROOM=WC306
 CAMTYPE=Wyse
-IP=172.25.170.250
+IP=172.25.210.235
 UN=Camera30
 PWD=myCamera30
 SRVR=qvideoe.niceng.com
