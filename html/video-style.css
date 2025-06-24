@@ -1,0 +1,15 @@
+.video-container {
+    height: auto;
+    max-height: calc(100lvh - 80px);
+    min-height: 100px;
+    margin: 0 auto;
+    aspect-ratio: 16/9;
+}
+
+.header {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

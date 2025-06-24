@@ -1,19 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Live Streaming</title>
-    <link href="video-js.min.css" rel="stylesheet">
-    <script src="js/video.min.js"></script>
-</head>
-<body>
-<br>WC207<br>
-<video id="player2" class="video-js vjs-default-skin" height="480" width="640" controls="true" autoplay="true" preload="auto">
-    <source src="http://video.q2025.org:8080/hls/WC207.m3u8" type="application/x-mpegURL" />
-</video>
 
-<script>
-  var player = videojs('#player2');
-</script>
+<head>
+  <meta charset="UTF-8">
+  <title>Live Streaming</title>
+  <link href="video-js.min.css" rel="stylesheet">
+  <link href="video-style.css" rel="stylesheet">
+  <script src="js/video.min.js"></script>
+</head>
+
+<body>
+  <p class="header">
+    WC207
+  </p>
+  <div class="video-container">
+    <video id="player2" class="video-js vjs-default-skin vjs-big-play-centered">
+    </video>
+  </div>
+
+  <script>
+    var player = videojs('player2', {
+      controls: true,
+      autoplay: false,
+      preload: 'auto',
+      responsive: true,
+      fill: true,
+      liveui: true,
+      retryOnError: true,
+      sources: [
+        {
+          src: 'http://video.q2025.org:8080/hls/WC207.m3u8',
+          type: 'application/x-mpegURL'
+        },
+        {
+          src: 'https://video.quizstats.org/hls/WC207.m3u8',
+          type: 'application/x-mpegURL'
+        }
+      ]
+    });
+  </script>
 </body>
+
 </html>

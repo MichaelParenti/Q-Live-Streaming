@@ -4,16 +4,38 @@
     <meta charset="UTF-8">
     <title>Live Streaming</title>
     <link href="video-js.min.css" rel="stylesheet">
+    <link href="video-style.css" rel="stylesheet">
     <script src="js/video.min.js"></script>
 </head>
 <body>
-<br>BA007<br>
-<video id="player2" class="video-js vjs-default-skin" height="480" width="640" controls="true" autoplay="true" preload="auto">
-    <source src="http://video.q2025.org:8080/hls/BA007.m3u8" type="application/x-mpegURL" />
-</video>
+<p class="header">
+    BA007
+</p>
+<div class="video-container">
+    <video id="player2" class="video-js vjs-default-skin vjs-big-play-centered">
+    </video>
+</div>
 
 <script>
-  var player = videojs('#player2');
+  var player = videojs('player2', {
+    controls: true,
+    autoplay: false,
+    preload: 'auto',
+    responsive: true,
+    fill: true,
+    liveui: true,
+    retryOnError: true,
+         sources: [
+       {
+         src: 'http://video.q2025.org:8080/hls/BA007.m3u8',
+         type: 'application/x-mpegURL'
+       },
+       {
+         src: 'https://video.quizstats.org/hls/BA007.m3u8',
+         type: 'application/x-mpegURL'
+       }
+     ]
+  });
 </script>
 </body>
 </html>
